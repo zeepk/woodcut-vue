@@ -1,9 +1,7 @@
 <template>
-	<div>
-		<v-app-bar color="deep-purple" dark app>
-			<v-toolbar-title>{{ navTitle }}</v-toolbar-title>
-		</v-app-bar>
-	</div>
+	<v-app-bar class="nav--bar" app>
+		<v-toolbar-title class="nav--title">{{ navTitle }}</v-toolbar-title>
+	</v-app-bar>
 </template>
 
 <script lang="ts">
@@ -19,4 +17,11 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.nav--bar {
+	background-color: var(--medium-gray) !important;
+}
+.nav--title {
+	color: var(--text-white);
+}
+</style>
