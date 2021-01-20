@@ -1,5 +1,5 @@
 <template>
-	<v-app>
+	<v-app class="app">
 		<NavBar />
 		<v-main>
 			<router-view />
@@ -24,3 +24,9 @@ export default Vue.extend({
 	}),
 });
 </script>
+<style scoped>
+.app {
+	background: var(--dark-gray) !important;
+	min-height: 100vh;
+}
+</style>
