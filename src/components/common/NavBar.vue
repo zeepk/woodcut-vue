@@ -1,10 +1,18 @@
 <template>
-	<v-app-bar class="nav--bar pt-2" app>
-		<v-toolbar-title class="nav--title">{{ navTitle }}</v-toolbar-title>
+	<v-app-bar class="nav--bar" app>
+		<v-toolbar-title class="nav--title">
+			<router-link to="/">
+				<v-img
+					max-height="150"
+					max-width="250"
+					src="@/assets/images/logo.png"
+				></v-img>
+			</router-link>
+		</v-toolbar-title>
 		<v-spacer />
-		<v-form>
+		<v-form class="search-form">
 			<v-text-field
-				class="mt-2"
+				class=""
 				:placeholder="searchPlaceholder"
 				outlined
 			></v-text-field>
@@ -14,7 +22,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { navTitle, searchPlaceholder } from '../../utils/constants';
+import { navTitle, searchPlaceholder } from '@/utils/constants';
 export default Vue.extend({
 	name: 'NavBar',
 	data() {
@@ -32,5 +40,8 @@ export default Vue.extend({
 }
 .nav--title {
 	color: var(--text-white);
+}
+.search-form {
+	max-height: 100%;
 }
 </style>

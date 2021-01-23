@@ -9,8 +9,8 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import NavBar from './components/common/NavBar.vue';
-import './assets/global.css';
+import NavBar from '@/components/common/NavBar.vue';
+import '@/assets/global.css';
 
 export default Vue.extend({
 	name: 'App',

@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import Vue from 'vue';
-import { baseApiUrl } from '../utils/constants';
+import { baseApiUrl } from '@/utils/constants';
 
 export default Vue.extend({
 	name: 'Home',
