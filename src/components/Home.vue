@@ -25,12 +25,6 @@ export default Vue.extend({
 			firstStatRecord: 'getFirstStatRecord',
 		}),
 	},
-	mounted() {
-		this.$store.dispatch('setCurrentUsername', {
-			username: this.$route.params.username,
-		});
-		this.$store.dispatch('setCurrentUserStatRecords');
-	},
 });
 </script>
 

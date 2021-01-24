@@ -26,7 +26,7 @@ export default new Vuex.Store({
 
   mutations: {
     updateCurrentUsername(state, username) {
-      state.currentUsername = username
+      state.currentUsername = username.toLowerCase().split(' ').join('+')
     },
     updateCurrentDisplayname(state, displayname) {
       state.currentDisplayname = displayname

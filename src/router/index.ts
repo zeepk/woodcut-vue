@@ -4,13 +4,16 @@ import Home from '../components/Home.vue';
 
 Vue.use(VueRouter);
 
+export const usernameRoute = { path: '/:username', name: 'Player', component: Home }
+
 const routes: Array<RouteConfig> = [
 	{
 		path: '/',
 		name: 'Home',
 		component: Home,
 	},
-	{ path: '/:username', component: Home }
+	usernameRoute
+
 ];
 
 const router = new VueRouter({
