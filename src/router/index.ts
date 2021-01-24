@@ -10,9 +10,11 @@ const routes: Array<RouteConfig> = [
 		name: 'Home',
 		component: Home,
 	},
+	{ path: '/:username', component: Home }
 ];
 
 const router = new VueRouter({
+	mode: 'history',
 	routes,
 });
 

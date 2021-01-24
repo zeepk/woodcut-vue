@@ -1,6 +1,7 @@
 // urls and routes
 
-export const baseApiUrl = 'localhost';
+export const baseApiUrl = process.env.VUE_APP_BASE_API_URL;
+export const statsUrl = 'users/';
 
 // verbiage
 
