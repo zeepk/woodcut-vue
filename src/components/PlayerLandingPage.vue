@@ -19,6 +19,18 @@ export default Vue.extend({
 			firstStatRecord: 'getFirstStatRecord',
 		}),
 	},
+	mounted() {
+		if (this.username === null) {
+			const formattedUsername = this.$route.params.username
+				.toLowerCase()
+				.split(' ')
+				.join('+');
+			this.$store.dispatch('setCurrentUsername', {
+				username: formattedUsername,
+			});
+			this.$store.dispatch('setCurrentUserStatRecords');
+		}
+	},
 });
 </script>
 
