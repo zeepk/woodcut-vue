@@ -7,3 +7,5 @@ export const statsUrl = 'users/';
 
 export const navTitle = 'Woodcut';
 export const searchPlaceholder = 'Username';
+export const homeHeader = 'Woodcut';
+

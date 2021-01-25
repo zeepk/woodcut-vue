@@ -2,10 +2,12 @@ import Vue from "vue";
 import Vuex from "vuex";
 import { baseApiUrl, statsUrl } from "@/utils/constants"
 import requestWrapper from "@/utils/requestWrapper"
+import { RootState } from "@/types/rootTypes"
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
+export default new Vuex.Store<RootState>({
+
   state: {
     currentUsername: null,
     currentDisplayname: null,
@@ -21,6 +23,9 @@ export default new Vuex.Store({
     },
     getFirstStatRecord: state => {
       return state.currentUserStatRecords[0] || null
+    },
+    getCurrentUserRecentStats: state => {
+      return state.currentUserStatRecords[0]?.skills || null
     }
   },
 

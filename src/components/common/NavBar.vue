@@ -36,12 +36,16 @@ export default Vue.extend({
 	},
 	methods: {
 		handleSubmit() {
+			const formattedUsername = this.username
+				.toLowerCase()
+				.split(' ')
+				.join('+');
 			this.$store.dispatch('setCurrentUsername', {
-				username: this.username,
+				username: formattedUsername,
 			});
 			this.$router.push({
 				...usernameRoute,
-				params: { username: this.username },
+				params: { username: formattedUsername },
 			});
 			this.$store.dispatch('setCurrentUserStatRecords');
 		},

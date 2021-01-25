@@ -1,31 +1,21 @@
 <template>
 	<div>
 		<h1>
-			{{ firstStatRecord.skills.find((skill) => skill.skillId === 0).xp }}
+			{{ homeHeader }}
 		</h1>
 	</div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { mapGetters } from 'vuex';
-import { baseApiUrl } from '@/utils/constants';
+import { homeHeader } from '@/utils/constants';
 
 export default Vue.extend({
 	name: 'Home',
 	data() {
 		return {
-			baseApiUrl: baseApiUrl,
+			homeHeader: homeHeader,
 		};
-	},
-	computed: {
-		...mapGetters({
-			username: 'getCurrentUsername',
-			displayName: 'getCurrentDisplayname',
-			firstStatRecord: 'getFirstStatRecord',
-		}),
 	},
 });
 </script>
-
-<style scoped></style>
