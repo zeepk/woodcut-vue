@@ -25,6 +25,7 @@
 import Vue from 'vue';
 import { navTitle, searchPlaceholder } from '@/utils/constants';
 import { usernameRoute } from '@/router/index';
+
 export default Vue.extend({
 	name: 'NavBar',
 	data() {

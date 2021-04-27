@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { baseApiUrl, statsUrl } from "@/utils/constants"
+import { gainsUrl } from "@/utils/constants"
 import requestWrapper from "@/utils/requestWrapper"
 import { RootState } from "@/types/rootTypes"
 
@@ -11,7 +11,8 @@ export default new Vuex.Store<RootState>({
   state: {
     currentUsername: null,
     currentDisplayname: null,
-    currentUserStatRecords: [],
+    currentUserSkillGains: [],
+    currentUserMinigameGains: []
   },
 
   getters: {
@@ -21,11 +22,8 @@ export default new Vuex.Store<RootState>({
     getCurrentDisplayname: state => {
       return state.currentDisplayname
     },
-    getFirstStatRecord: state => {
-      return state.currentUserStatRecords[0] || null
-    },
-    getCurrentUserRecentStats: state => {
-      return state.currentUserStatRecords[0]?.skills || null
+    getCurrentUserSkillGains: state => {
+      return state.currentUserSkillGains
     }
   },
 
@@ -36,8 +34,8 @@ export default new Vuex.Store<RootState>({
     updateCurrentDisplayname(state, displayname) {
       state.currentDisplayname = displayname
     },
-    updateCurrentUserStatRecords(state, stats) {
-      state.currentUserStatRecords = stats
+    updateCurrentUserSkillGains(state, gains) {
+      state.currentUserSkillGains = gains
     }
   },
 
@@ -49,11 +47,11 @@ export default new Vuex.Store<RootState>({
     },
     async setCurrentUserStatRecords(context) {
       const options = {
-        url: `${baseApiUrl}${statsUrl}${context.state.currentUsername}`,
+        url: `${gainsUrl}${context.state.currentUsername}`,
         method: 'get' as const,
       };
       const res = await requestWrapper(options);
-      context.commit('updateCurrentUserStatRecords', res.data.statRecords || [])
+      context.commit('updateCurrentUserSkillGains', res.data.skillGains || [])
       context.commit('updateCurrentDisplayname', res.data.displayName || null)
     }
   }

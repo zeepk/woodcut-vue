@@ -1,34 +1,50 @@
 <template>
-	<div>
-		<h1>
-			{{ firstStatRecord.skills.find((skill) => skill.skillId === 0).xp }}
-		</h1>
+	<div class="ma-10">
+		<v-data-table
+			:headers="skillTableHeaders"
+			:items="skillGains"
+			disable-pagination
+			hide-default-footer
+			class="elevation-1"
+		/>
 	</div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
+import { skillTableHeaders } from '@/utils/constants';
 
 export default Vue.extend({
 	name: 'PlayerLandingPage',
+	data: function () {
+		return {
+			skillTableHeaders
+		}
+	},
 	computed: {
 		...mapGetters({
 			username: 'getCurrentUsername',
 			displayName: 'getCurrentDisplayname',
-			firstStatRecord: 'getFirstStatRecord',
+			skillGains: 'getCurrentUserSkillGains',
 		}),
 	},
-	mounted() {
+	methods: {
+		...mapActions({
+			setCurrentUsername: 'setCurrentUsername',
+			setCurrentUserStatRecords: 'setCurrentUserStatRecords',
+		}),
+	},
+	async mounted() {
 		if (this.username === null) {
 			const formattedUsername = this.$route.params.username
 				.toLowerCase()
 				.split(' ')
 				.join('+');
-			this.$store.dispatch('setCurrentUsername', {
+			this.setCurrentUsername({
 				username: formattedUsername,
 			});
-			this.$store.dispatch('setCurrentUserStatRecords');
+			await this.setCurrentUserStatRecords();
 		}
 	},
 });
