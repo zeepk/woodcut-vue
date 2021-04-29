@@ -48,7 +48,7 @@ export default Vue.extend({
 				...usernameRoute,
 				params: { username: formattedUsername },
 			});
-			this.$store.dispatch('setCurrentUserStatRecords');
+			this.$store.dispatch('getCurrentUserStatRecords');
 		},
 	},
 });

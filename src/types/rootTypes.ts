@@ -1,4 +1,4 @@
-interface Skill {
+export interface Skill {
     skillId: number,
     xp: number,
     level: number,

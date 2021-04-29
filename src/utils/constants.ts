@@ -15,7 +15,7 @@ export const homeHeader = 'Woodcut';
 export const skillTableHeaders = [
     {
         text: 'Skill',
-        value: 'skillId',
+        value: 'skillIcon',
     },
     { text: 'Xp', value: 'xp' },
     { text: 'Level', value: 'level' },

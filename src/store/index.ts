@@ -22,7 +22,7 @@ export default new Vuex.Store<RootState>({
     getCurrentDisplayname: state => {
       return state.currentDisplayname
     },
-    getCurrentUserSkillGains: state => {
+    currentUserSkillGains: state => {
       return state.currentUserSkillGains
     }
   },
@@ -45,7 +45,7 @@ export default new Vuex.Store<RootState>({
         context.commit('updateCurrentUsername', payload.username)
       }
     },
-    async setCurrentUserStatRecords(context) {
+    async getCurrentUserStatRecords(context) {
       const options = {
         url: `${gainsUrl}${context.state.currentUsername}`,
         method: 'get' as const,

@@ -1,38 +1,28 @@
 <template>
 	<div class="ma-10">
-		<v-data-table
-			:headers="skillTableHeaders"
-			:items="skillGains"
-			disable-pagination
-			hide-default-footer
-			class="elevation-1"
-		/>
+		<h3>{{displayName}}</h3>
+		<SkillsTable />
 	</div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
+import SkillsTable from '@/components/SkillsTable.vue';
 import { mapGetters, mapActions } from 'vuex';
-import { skillTableHeaders } from '@/utils/constants';
-
 export default Vue.extend({
 	name: 'PlayerLandingPage',
-	data: function () {
-		return {
-			skillTableHeaders
-		}
+	components: {
+		SkillsTable
 	},
 	computed: {
 		...mapGetters({
 			username: 'getCurrentUsername',
 			displayName: 'getCurrentDisplayname',
-			skillGains: 'getCurrentUserSkillGains',
 		}),
 	},
 	methods: {
 		...mapActions({
 			setCurrentUsername: 'setCurrentUsername',
-			setCurrentUserStatRecords: 'setCurrentUserStatRecords',
 		}),
 	},
 	async mounted() {
@@ -44,7 +34,6 @@ export default Vue.extend({
 			this.setCurrentUsername({
 				username: formattedUsername,
 			});
-			await this.setCurrentUserStatRecords();
 		}
 	},
 });
